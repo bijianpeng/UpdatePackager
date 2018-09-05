@@ -1,0 +1,54 @@
+<idea-plugin>
+    <id>com.bjp.updatepackager</id>
+    <name>Update Packager</name>
+    <version>1.0</version>
+
+    <description><![CDATA[This is a very useful tool for developers to package some class files into a zip with the project structure]]></description>
+
+    <change-notes><![CDATA[]]></change-notes>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="173.0"/>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+    <depends>com.intellij.javaee</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <projectConfigurable instance="com.bjp.updatepackager.setting.PackSetting" displayName="UpdatePackager"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <group id="com.bjp.updatepackager.Group" text="UpdatePackagerGroup">
+            <add-to-group group-id="MainToolBar" anchor="last"/>
+            <action id="com.bjp.updatepackager.action.CopyClassPathAction" class="com.bjp.updatepackager.action.CopyClassPathAction"
+                    text="CopyClazzPath" description="Copy the class path to clipboard" icon="/icon/copy.png">
+            </action>
+            <action id="com.bjp.updatepackager.action.FilePackAction" class="com.bjp.updatepackager.action.FilePackAction"
+                    text="PackingUpdate" description="Packing all the selected file to a zipfile" icon="/icon/pack.png">
+            </action>
+        </group>
+        <!--<action id="com.bjp.updatepackager.CopyClassPathAction" class="com.bjp.updatepackager.CopyClassPathAction"-->
+        <!--text="CopyClazzPath" description="Copy the class path to clipboard" icon="/icon/copy.png">-->
+        <!--<add-to-group group-id="MainToolBar" anchor="first"/>-->
+        <!--</action>-->
+        <!--<action id="com.bjp.updatepackager.FilePackAction" class="com.bjp.updatepackager.FilePackAction"-->
+        <!--text="PackingUpdate" description="Packing all the selected file to a zipfile" icon="/icon/pack.png">-->
+        <!--<add-to-group group-id="MainToolBar" anchor="last"/>-->
+        <!--</action>-->
+        <action id="com.bjp.updatepackager.action.FilePrintAction" class="com.bjp.updatepackager.action.FilePrintAction"
+                text="PrintPath" description="Print the selected file path" icon="/icon/print.png">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="CutCopyPasteGroup"/>
+        </action>
+    </actions>
+
+</idea-plugin>
